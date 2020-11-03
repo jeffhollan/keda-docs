@@ -32,17 +32,11 @@ Deploying KEDA with Helm is very simple:
 
 3. Install `keda` Helm chart
 
-    **Helm 2**
-
-    ```sh
-    helm install kedacore/keda --namespace keda --name keda
-    ```
-
     **Helm 3**
 
     ```sh
     kubectl create namespace keda
-    helm install keda kedacore/keda --version 2.0.0-rc2 --namespace keda
+    helm install keda kedacore/keda --version 2.0.0-rc3 --namespace keda
     ```
 
 ### Uninstall
@@ -53,15 +47,6 @@ If you want to remove KEDA from a cluster you can run one of the following:
 
 ```sh
 helm uninstall -n keda keda
-kubectl delete -f https://raw.githubusercontent.com/kedacore/keda/main/config/crd/bases/keda.sh_scaledobjects.yaml
-kubectl delete -f https://raw.githubusercontent.com/kedacore/keda/main/config/crd/bases/keda.sh_scaledjobs.yaml
-kubectl delete -f https://raw.githubusercontent.com/kedacore/keda/main/config/crd/bases/keda.sh_triggerauthentications.yaml
-```
-
-**Using Helm 2**
-
-```sh
-helm delete --purge keda
 kubectl delete -f https://raw.githubusercontent.com/kedacore/keda/main/config/crd/bases/keda.sh_scaledobjects.yaml
 kubectl delete -f https://raw.githubusercontent.com/kedacore/keda/main/config/crd/bases/keda.sh_scaledjobs.yaml
 kubectl delete -f https://raw.githubusercontent.com/kedacore/keda/main/config/crd/bases/keda.sh_triggerauthentications.yaml
